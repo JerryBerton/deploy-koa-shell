@@ -1,10 +1,10 @@
 module.exports = (handler) => {
-  return async ctx => {
-    const { request, response } = ctx;
-    handler(request, response, (err) => {
-      response.statusCode = 404
-      response.end('no such location')
+  return async (ctx, next) => {
+    const { req, res } = ctx;
+    handler(req, res, (err) => {
+      res.statusCode = 404
+      res.end('no such location')
     })
-    await next;
+    await next();
   }
 }

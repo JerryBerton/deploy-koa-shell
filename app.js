@@ -4,10 +4,10 @@ const createHandler = require('github-webhook-handler');
 const handler = createHandler({ path: '/', secret: 'wjb-test' });
 const webhook = require('./middleware/webhook');
 
-app.use(webhook(handler));
+ app.use(webhook(handler));
 
 app.use(ctx => {
-  console.log(ctx)
+
   ctx.body = 'this is test'
 })
 
